@@ -80,5 +80,9 @@ public class ProductController {
         return productDao.chercherUnProduitCher(400);
     }
 
-
+    //Tri aplpha
+    @GetMapping(value = "produits/tri")
+    public List<Product> triProduit() {
+        return productDao.triProduct();
+    }
 }
