@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Api(description = "API pour es opérations CRUD sur les produits.")
+@Api(description = "API pour les opérations CRUD sur les produits.")
 
 @RestController
 public class ProductController {
@@ -31,6 +31,7 @@ public class ProductController {
 
 
     //Récupérer la liste des produits
+    @ApiOperation(value = "Récupère la liste des produits")
     @RequestMapping(value = "/Produits", method = RequestMethod.GET)
     public MappingJacksonValue listeProduits() {
         Iterable<Product> produits = productDao.findAll();
@@ -54,6 +55,7 @@ public class ProductController {
     }
 
     //ajouter un produit
+    @ApiOperation(value = "Ajoute un produit")
     @PostMapping(value = "/Produits")
     public ResponseEntity<Void> ajouterProduit(@Valid @RequestBody Product product) {
         Product productAdded = productDao.save(product);
@@ -67,22 +69,29 @@ public class ProductController {
         return ResponseEntity.created(location).build();
     }
 
+    //Récupérer un produit par son Id
+    @ApiOperation(value = "Supprime un produit grâce à son ID à condition que celui-ci soit en stock!")
     @DeleteMapping(value = "/Produits/{id}")
     public void supprimerProduit(@PathVariable int id) {
         productDao.delete(id);
     }
 
+    //Met à jour un produit
+    @ApiOperation(value = "Met à jour un produit")
     @PutMapping(value = "/Produits")
     public void updateProduit(@RequestBody Product product) {
         productDao.save(product);
     }
 
     //Pour les tests
+    @ApiOperation(value = "Pour les tests")
     @GetMapping(value = "test/produits/{prix}")
     public List<Product> testeDeRequetes(@PathVariable int prix) {
         return productDao.chercherUnProduitCher(400);
     }
 
+    //Affiche les produits avec la marge
+    @ApiOperation(value = "Affiche les produits avec la marge")
     @GetMapping(value = "/AdminProduits")
     private ArrayList<String> calculerMargeProduit() {
         Iterable<Product> produits = productDao.findAll();
@@ -96,6 +105,7 @@ public class ProductController {
     }
 
     //Tri aplpha
+    @ApiOperation(value = "Affiche les produits dans l'ordre alphabétique")
     @GetMapping(value = "produits/tri")
     public List<Product> triProduit() {
         return productDao.triProduct();
