@@ -1,4 +1,4 @@
-﻿package com.ecommerce.microcommerce.web.controller;
+package com.ecommerce.microcommerce.web.controller;
 
 import com.ecommerce.microcommerce.dao.ProductDao;
 import com.ecommerce.microcommerce.model.Product;
@@ -93,6 +93,7 @@ public class ProductController {
             listProduits.add(produit.toString() + ":" + marge);
         }
         return listProduits;
+    }
 
     //Tri aplpha
     @GetMapping(value = "produits/tri")
