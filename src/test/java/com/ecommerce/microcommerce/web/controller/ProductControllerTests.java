@@ -1,29 +1,18 @@
-package com.ecommerce.microcommerce;
+package com.ecommerce.microcommerce.web.controller;
 
 import com.ecommerce.microcommerce.dao.ProductDao;
 import com.ecommerce.microcommerce.model.Product;
-import com.ecommerce.microcommerce.web.controller.ProductController;
 import com.google.gson.Gson;
-import io.restassured.module.mockmvc.specification.MockMvcRequestSpecification;
-import org.apache.http.client.methods.HttpPost;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.BDDMockito;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultMatcher;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.ArrayList;
@@ -149,22 +138,28 @@ public class ProductControllerTests {
     public void testAfficherProd() throws Exception {
             // Mocking service
             when(produits.findById(1)).thenReturn(prod.get(0));
-            when(produits.findById(3)).thenReturn(prod.get(2));
             mockMvc.perform(get("/Produits/1").contentType(MediaType.APPLICATION_JSON))
                     .andDo(print())
                     .andExpect(status().isOk())
                     .andDo(print())
                     .andReturn();
+    }
 
-            //Exception1
-            mockMvc.perform(get("/Produits/5").contentType(MediaType.APPLICATION_JSON))
+    @Test
+    public void testAfficherProdException1() throws Exception {
+        //Exception1
+        mockMvc.perform(get("/Produits/5").contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isNotFound())
                 .andDo(print())
                 .andReturn();
+    }
 
-            //Exception2
-            mockMvc.perform(get("/Produits/3").contentType(MediaType.APPLICATION_JSON))
+    @Test
+    public void testAfficherProdException2() throws Exception {
+        when(produits.findById(3)).thenReturn(prod.get(2));
+        //Exception2
+        mockMvc.perform(get("/Produits/3").contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isNotAcceptable())
                 .andDo(print())
