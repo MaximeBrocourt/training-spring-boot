@@ -29,7 +29,6 @@ public class ProductController {
     @Autowired
     private ProductDao productDao;
 
-
     //Récupérer la liste des produits
     @ApiOperation(value = "Récupère la liste des produits")
     @RequestMapping(value = "/Produits", method = RequestMethod.GET)
@@ -92,7 +91,7 @@ public class ProductController {
 
     //Affiche les produits avec la marge
     @ApiOperation(value = "Affiche les produits avec la marge")
-    @GetMapping(value = "/AdminProduits")
+    @GetMapping(value = "/margeProduits")
     private ArrayList<String> calculerMargeProduit() {
         Iterable<Product> produits = productDao.findAll();
         ArrayList<String> listProduits = new ArrayList<>();
