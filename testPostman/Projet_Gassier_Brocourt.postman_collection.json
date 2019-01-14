@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:8080/produits/tri",
+			"name": "http://localhost:8080/Produits",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -35,6 +35,31 @@
 						"AdminProduits"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Produits/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produits/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produits",
+						"1"
+					]
+				},
+				"description": "Cherche un produit par ID"
 			},
 			"response": []
 		},
@@ -68,7 +93,172 @@
 						"Produits",
 						"5"
 					]
-				}
+				},
+				"description": "Exception produits gratuit"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Produits/10",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produits/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produits",
+						"10"
+					]
+				},
+				"description": "Exception produits introuvable\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Produits",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"id\" : 10,\n\"nom\": null,\n\"prix\":800,\n\"prixAchat\":1000\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produits",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produits"
+					]
+				},
+				"description": "Ajouter un produits"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Produits/3",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\" : 1,\n\t\"nom\": \"NouveauNom\",\n\t\"prix\": 400,\n\t\"prixAchat\": 800\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produits",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produits"
+					]
+				},
+				"description": "Suppresion d'un produit"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Produits",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\" : 1,\n\t\"nom\": \"NouveauNom\",\n\t\"prix\": 400,\n\t\"prixAchat\": 800\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/Produits",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Produits"
+					]
+				},
+				"description": "Update un produits"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/test/produits/400",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/test/produits/400",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"test",
+						"produits",
+						"400"
+					]
+				},
+				"description": "Cherche produits avec prix supérieur à 400"
 			},
 			"response": []
 		},
@@ -102,6 +292,41 @@
 						"AdminProduits"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/produits/tri",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/produits/tri",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produits",
+						"tri"
+					]
+				},
+				"description": "Tri des produits"
 			},
 			"response": []
 		}
